@@ -1,8 +1,10 @@
-== SSHTunnel
+SSHTunnel
+=========
 
 A SSH Tunnel app for Android
 
-== Build
+Build
+=====
 
 NDK_MODULE_PATH=. ndk-build
 cp libs/armeabi/sshtunnel assets/
