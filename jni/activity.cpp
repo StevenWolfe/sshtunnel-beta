@@ -10,7 +10,7 @@ int send_intent(int type, const char *status)
 {
     char command[PATH_MAX];
 
-    sprintf(command, "/system/bin/am broadcast -a 'org.sshtunnel.NOTIFICATION' --ei type '%d' --ei status '%s' > /dev/null", type, status);	
+    sprintf(command, "/system/bin/am broadcast -a \"org.sshtunnel.NOTIFICATION\" --ei type \"%d\" --es status \"%s\" > /dev/null", type, status);	
 
     // before sending the intent, make sure the (uid and euid) and (gid and egid) match,
     // otherwise LD_LIBRARY_PATH is wiped in Android 4.0+.
