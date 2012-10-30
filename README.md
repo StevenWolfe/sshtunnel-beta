@@ -4,7 +4,7 @@ SSHTunnel
 A SSH Tunnel app for Android
 
 Build
-=====
+-----
 
 ```bash
 NDK_MODULE_PATH=. ndk-build
