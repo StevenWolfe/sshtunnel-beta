@@ -48,7 +48,6 @@ LOCAL_STATIC_LIBRARIES := \
 	libcrypto
 
 LOCAL_SHARED_LIBRARIES := \
-	liblog \
 	libutils \
 	libbinder \
 	libcutils \

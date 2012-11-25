@@ -4,16 +4,25 @@
 #include <fcntl.h>
 #include <paths.h>
 
-#include <android/log.h>
-#ifndef LOGE
-#define LOGE(...) ALOGE(__VA_ARGS__)
-#endif
-#ifndef LOGD
-#define LOGD(...) ALOGD(__VA_ARGS__)
-#endif
-#ifndef LOGW
-#define LOGW(...) ALOGW(__VA_ARGS__)
-#endif
+static unsigned int get_userid(unsigned int uid) {
+    if (uid > 99999) {
+        return uid / 100000;
+    }
+    return 0;
+}
+
+static void set_identity(unsigned int uid)
+{
+    if (seteuid(0)) {
+        exit(EXIT_FAILURE);
+    }
+    if (setresgid(uid, uid, uid)) {
+        exit(EXIT_FAILURE);
+    }
+    if (setresuid(uid, uid, uid)) {
+        exit(EXIT_FAILURE);
+    }
+}
 
 int send_intent(int type, const char *status)
 {
@@ -22,11 +31,7 @@ int send_intent(int type, const char *status)
     sprintf(command, "exec /system/bin/am broadcast --user %d -a \"org.sshtunnel.NOTIFICATION\" --ei type \"%d\" --es status \"%s\" > /dev/null", get_userid(getuid()), type, status);	
     char *args[] = { "sh", "-c", command, NULL, };
 
-    setenv("LD_LIBRARY_PATH", "/vendor/lib:/system/lib", 0);
-    setgroups(0, NULL);
-    setegid(getgid());
-    seteuid(getuid());
-    LOGD("gid: %u, uid: %u, userid: %u", getgid(), getuid(), get_userid(getuid()));
+    set_identity(getuid());
     execv(_PATH_BSHELL, args);
 
     return 0;
