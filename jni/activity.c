@@ -5,12 +5,8 @@
 #include <paths.h>
 
 #include <android/log.h>
-
-#ifndef LOG_TAG
-#define LOG_TAG "SSHTunnel"
-#endif
 #ifndef LOGD
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+#define LOGD(…) ((void)LOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__))
 #endif
 
 static unsigned int get_userid(unsigned int uid) {
