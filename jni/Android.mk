@@ -36,7 +36,7 @@ SSHOBJS := ssh.c readconf.c clientloop.c sshtty.c \
 
 OPENSSH_SRC := $(LIBSSH_OBJS) $(SSHOBJS)
 
-LOCAL_SRC_FILES := activity.c $(OPENSSH_SRC)
+LOCAL_SRC_FILES := activity.cpp $(OPENSSH_SRC)
 
 LOCAL_C_INCLUDES += \
 					${NDK_MODULE_PATH}/openssl/include \

@@ -1,4 +1,4 @@
-#!/system/bin/sh
+ps#!/system/bin/sh
 
 DIR=/data/data/org.sshtunnel.beta
 

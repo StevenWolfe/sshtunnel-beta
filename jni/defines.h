@@ -45,8 +45,7 @@ enum
 /*
  * Definitions for IP type of service (ip_tos)
  */
-#if 0
-//#ifndef IPTOS_LOWDELAY
+#ifndef IPTOS_LOWDELAY
 # define IPTOS_LOWDELAY          0x10
 # define IPTOS_THROUGHPUT        0x08
 # define IPTOS_RELIABILITY       0x04
