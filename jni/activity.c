@@ -5,16 +5,15 @@
 #include <paths.h>
 
 #include <android/log.h>
-#ifndef LOGD
-#define LOGD(…) ((void)LOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__))
+#ifndef LOGE
+#define LOGE(...) ALOGE(__VA_ARGS__)
 #endif
-
-static unsigned int get_userid(unsigned int uid) {
-    if (uid > 99999) {
-        return uid / 100000;
-    }
-    return 0;
-}
+#ifndef LOGD
+#define LOGD(...) ALOGD(__VA_ARGS__)
+#endif
+#ifndef LOGW
+#define LOGW(...) ALOGW(__VA_ARGS__)
+#endif
 
 int send_intent(int type, const char *status)
 {
