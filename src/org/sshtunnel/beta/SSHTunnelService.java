@@ -195,11 +195,11 @@ public class SSHTunnelService extends Service implements ConnectionMonitor {
 				String cmd = "";
 
 				if (isSocks)
-					cmd += "/data/data/org.sshtunnel.beta/ssh.sh dynamic "
+					cmd += "su -c /data/data/org.sshtunnel.beta/ssh.sh dynamic "
 							+ port + " " + localPort + " " + user + " "
 							+ hostIP;
 				else
-					cmd += "/data/data/org.sshtunnel.beta/ssh.sh local " + port
+					cmd += "su -c /data/data/org.sshtunnel.beta/ssh.sh local " + port
 							+ " " + localPort + " " + "127.0.0.1" + " "
 							+ remotePort + " " + user + " " + hostIP;
 
