@@ -42,13 +42,14 @@ LOCAL_C_INCLUDES += \
 					${NDK_MODULE_PATH}/openssl/include \
 					${NDK_MODULE_PATH}/zlib
 
+LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog
+
 LOCAL_STATIC_LIBRARIES := \
 	libopenbsd-compat \
 	libz \
 	libcrypto
 
 LOCAL_SHARED_LIBRARIES := \
-	liblog \
 	libutils \
 	libbinder \
 	libcutils \
