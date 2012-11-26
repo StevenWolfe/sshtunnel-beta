@@ -169,9 +169,9 @@ public class SSHTunnelService extends Service implements ConnectionMonitor {
 					if (notify_type == 0) {
 						process_id = notify_status;
 						return true;
-					} else if (notify_type == 1)
+					} else if (notify_type == 1) {
 						return false;
-					else if (notify_type == 3) {
+          } else if (notify_type == 3) {
 						if (sshOS != null) {
 							try {
 								sshOS.write((password + "\n").getBytes());
@@ -195,11 +195,11 @@ public class SSHTunnelService extends Service implements ConnectionMonitor {
 				String cmd = "";
 
 				if (isSocks)
-					cmd += "su -c /data/data/org.sshtunnel.beta/ssh.sh dynamic "
+					cmd += "/data/data/org.sshtunnel.beta/ssh.sh dynamic "
 							+ port + " " + localPort + " " + user + " "
 							+ hostIP;
 				else
-					cmd += "su -c /data/data/org.sshtunnel.beta/ssh.sh local " + port
+					cmd += "/data/data/org.sshtunnel.beta/ssh.sh local " + port
 							+ " " + localPort + " " + "127.0.0.1" + " "
 							+ remotePort + " " + user + " " + hostIP;
 
